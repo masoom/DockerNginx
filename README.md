@@ -5,28 +5,26 @@ Creating an automated Docker environment with NGINX composed by one single Conta
 api1-3 is test app (flask python app which returns api1, api2, api3 when you go on nginx proxy).
 Specify hostnames like api1 in nginx/site.conf
 
-test_rest.py is a python script that imitates a RESTful service
+docker-compose.yml - This file specifies all containers which will run on docker-compose up command.
+ 
+site.conf - virtual host configuration file with proxy options and some performance tuning like caching and ssl options).
 
-
-## Getting Started
+test_rest.py - python script that imitates a RESTful service
 
 
 ### Prerequisites
-
-What things you need to install the software and how to install them
 
 Install Pytest
 ```
 sudo pip3 install pytest
 ```
 
-
 ## Running 
 
-To run app, go to project directory where you will see docker-compose.yml file and fire the below Build command to start the whole environment
+To run app, go to project directory where you will see docker-compose.yml file and fire the below Build command to start the whole environment. Deployment is automatic and portable in every single-host Docker environment.
 
 ```
-"docker-compose up --build" 
+docker-compose up --build 
 ```
 
 ### To Stop
@@ -73,10 +71,26 @@ services:
 # Third Backend with Test app
   api3:
     build: ./api3
+    
 ```
 
+## SSL Certificates
+```
+Self Signed SSL is the type of certificate used in the above solution.
+All config files\SSL certificates and logs are mounted in container at startup.  
 
+```
+## Exposing Ports
+```
+NGINX exposing port 80 and 443 to the outside. 
+      - 80:80
+      - 443:443
+```
+## Persistent NGINX Configuration
 
+All configs and other files will be stored on host machine and attached to any running container on startup. This will be implemented in docker-compose file. Docker Compose preserves all volumes used by your services. When docker-compose up runs, if it finds any containers from previous runs, it copies the volumes from the old container to the new container. This process ensures that any data you’ve created in volumes isn’t lost.
 
+## Security
 
+All shared files which are mounted in container are read-only(can't be modifed inside container, only from host)
 
