@@ -82,7 +82,8 @@ All config files\SSL certificates and logs are mounted in container at startup.
 ## Exposing Ports
 NGINX exposing port 80 and 443 to the outside. 
 ```
-
+nginx:
+    ports:
       - 80:80
       - 443:443
 ```
