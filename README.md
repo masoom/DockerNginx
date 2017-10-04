@@ -2,12 +2,14 @@
 
 Creating an automated Docker environment with NGINX composed by one single Container running an NGINX proxy.
 
-api1-3 is test app (flask python app which returns api1, api2, api3 when you go on nginx proxy).
-Specify hostnames like api1 in nginx/site.conf
-
 docker-compose.yml - This file specifies all containers which will run on docker-compose up command.
  
+nginx.conf - main nginx configuration
+
 site.conf - virtual host configuration file with proxy options and some performance tuning like caching and ssl options).
+
+api1-3 is test app (flask python app which returns api1, api2, api3 when you go on nginx proxy).
+Specify hostnames like api1 in nginx/site.conf
 
 test_rest.py - python script that imitates a RESTful service
 
