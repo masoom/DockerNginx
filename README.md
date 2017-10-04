@@ -75,14 +75,14 @@ services:
 ```
 
 ## SSL Certificates
-```
+
 Self Signed SSL is the type of certificate used in the above solution.
 All config files\SSL certificates and logs are mounted in container at startup.  
 
-```
 ## Exposing Ports
-```
 NGINX exposing port 80 and 443 to the outside. 
+```
+
       - 80:80
       - 443:443
 ```
