@@ -20,14 +20,6 @@ Install Pytest
 sudo pip3 install pytest
 ```
 
-### Installing
-
-Say what the step will be
-
-```
-Give the example
-```
-
 
 ## Running 
 
