@@ -15,11 +15,11 @@ test_rest.py - python script that imitates a RESTful service
 
 ### Prerequisites
 
-Install NGINX Server
+Install NGINX 
 
 ```
-sudo apt-get update
-sudo apt-get install nginx
+sudo apt-get install -y nginx
+
 ```
 
 Install Docker Compose 
