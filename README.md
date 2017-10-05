@@ -152,7 +152,7 @@ All shared files which are mounted in container are read-only(can't be modifed i
 
 ## Required Software
 
-<br />Docker 17.06.0 or above
+Docker 17.06.0 or above
 <br />python 2.7.14 or above
 <br />Ubuntu 14.04 64 bit
 <br />Flask 0.12.2 
