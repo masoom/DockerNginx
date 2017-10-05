@@ -64,6 +64,13 @@ docker-compose stop
 docker-compose restart 
 ```
 
+## Running Tests Locally. 
+
+Go to the main directory where the test.rest.py file is located which imitates a RESTful service
+```
+python test_rest.py
+```
+
 ## Docker Compose
 
 ```
@@ -112,8 +119,8 @@ if __name__ == "__main__":
 
 ## SSL Certificates
 
-Self Signed SSL is the type of certificate used in the above solution.
-All config files\SSL certificates and logs are mounted in container at startup.
+Self Signed SSL is the type of certificate used in the above solution & attached to NGINX container on setup.
+All config files\SSL certificates and logs are mounted in container at startup.  
 
 Creates a directory ssl that will be used to hold all SSL information & mounting certificates from host.
 ```
