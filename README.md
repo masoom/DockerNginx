@@ -15,16 +15,26 @@ test_rest.py - python script that imitates a RESTful service
 
 ### Prerequisites
 
-Install Pytest
-```
-sudo pip3 install pytest
-```
-
-Install NGINX Web Server
+Install NGINX Server
 
 ```
 sudo apt-get update
 sudo apt-get install nginx
+```
+
+Install Docker Compose 
+```
+sudo pip install docker-compose
+```
+
+Install python-pip:
+```
+sudo apt-get -y install python-pip
+```
+
+Install Pytest
+```
+sudo pip3 install pytest
 ```
 
 ## Running 
@@ -94,7 +104,7 @@ sudo mkdir /etc/nginx/ssl
 
 Configure Nginx to Use SSL.
 
-To configure NGINX to use SSL, Modify NGINX configuration by adjusting server block. Add these lines in the server block, 
+To configure NGINX to use SSL, Modify NGINX configuration by adjusting server block. Add these lines in the server block
 ```
 server {
         listen 443;
