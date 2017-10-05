@@ -13,13 +13,12 @@ Specify hostnames like api1 in nginx/site.conf
 
 test_rest.py - python script that imitates a RESTful service
 
-
 ### Prerequisites
 
 Install Pytest
 ```
 sudo pip3 install pytest
-≈
+```
 
 Install NGINX Web Server
 
