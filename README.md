@@ -157,6 +157,13 @@ All configs and other files will be stored on host machine and attached to any r
 
 All shared files which are mounted in container are read-only(can't be modifed inside container, only from host)
 
+## Keepalive Connections
+
+Keepalive connections reduce the CPU and network overhead needed to open and close connections. In my solution, I have Set an Idle keepalive connection to remain open for 20 ms    
+```
+    keepalive_timeout 20;
+```
+
 ## Required Software
 
 Docker 17.06.0 or above
