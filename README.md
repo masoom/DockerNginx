@@ -1,6 +1,6 @@
 # Automated Docker environment with NGINX
 
-Creating an automated Docker environment with NGINX composed by one single Container running an NGINX proxy.
+Setting up an automated multi-container Docker environment with a container running NGINX proxy & another container running simple Flask python app.
 
 docker-compose.yml - This file specifies all containers which will run on docker-compose up command.
  
@@ -92,6 +92,27 @@ services:
     
 ```
 
+## 
+Dockerize a Flask App
+Create a new file app.py inside the main dir and add the following python code
+```
+from flask import Flask
+@app.route('/api/v1.0/tasks', methods=['GET'])
+def get_tasks():
+    return jsonify({'tasks': tasks})
+
+@app.route('/api/v1.0/tasks/<int:task_id>', methods=['GET'])
+def get_task(task_id):
+    task = [task for task in tasks if task['id'] == task_id]
+    if len(task) == 0:
+        abort(404)
+    return jsonify({'task': task[0]})
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=80, debug=True)
+    
+```
+
 ## SSL Certificates
 
 Self Signed SSL is the type of certificate used in the above solution.
@@ -132,3 +153,9 @@ All configs and other files will be stored on host machine and attached to any r
 
 All shared files which are mounted in container are read-only(can't be modifed inside container, only from host)
 
+## Required Software
+
+Docker 17.06.0 or above
+python 2.7.14 or above
+Ubuntu 14.04 64 bit
+Flask 0.12.2 
