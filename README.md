@@ -19,6 +19,13 @@ test_rest.py - python script that imitates a RESTful service
 Install Pytest
 ```
 sudo pip3 install pytest
+≈
+
+Install NGINX Web Server
+
+```
+sudo apt-get update
+sudo apt-get install nginx
 ```
 
 ## Running 
@@ -79,10 +86,29 @@ services:
 ## SSL Certificates
 
 Self Signed SSL is the type of certificate used in the above solution.
-All config files\SSL certificates and logs are mounted in container at startup.  
+All config files\SSL certificates and logs are mounted in container at startup.
+
+Creates a directory ssl that will be used to hold all SSL information & mounting certificates from host.
+```
+sudo mkdir /etc/nginx/ssl
+```
+
+Configure Nginx to Use SSL.
+
+To configure NGINX to use SSL, Modify NGINX configuration by adjusting server block. Add these lines in the server block, 
+```
+server {
+        listen 443;
+        server_name _;
+        
+		ssl on;
+
+		ssl_certificate     /etc/nginx/ssl/domain.crt;
+		ssl_certificate_key /etc/nginx/ssl/domain.key;
+```
 
 ## Exposing Ports
-NGINX exposing port 80 and 443 to the outside. 
+NGINX exposing port 80 and 443 to outside. 
 ```
 nginx:
     ports:
